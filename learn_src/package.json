@@ -1,7 +1,7 @@
 {
   "name": "starter--near-sdk-as",
   "version": "0.0.1",
-  "description": "Start with a basic project",
+  "description": "Near AssemblyScript project",
   "scripts": {
     "dev": "watch -d -n 1 'clear && yarn test'",
     "test": "yarn asp -f unit.spec",
