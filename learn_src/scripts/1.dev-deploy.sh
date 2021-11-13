@@ -21,10 +21,22 @@ echo ---------------------------------------------------------
 echo
 
 # comment out the line below to deploy the other example contract
-near dev-deploy ./build/release/ngo.wasm
+# near dev-deploy ./build/release/ngo.wasm
+near deploy --accountId $OWNER --wasmFile ./build/release/ngo.wasm
 
 # uncomment the line below to deploy the other example contract
 # near dev-deploy ./build/release/singleton.wasm
+
+echo --------------------------------------------
+echo
+echo "creating a user subaccount"
+echo
+dir_path=$(dirname $(realpath $0))
+counter=$(cat $dir_path/../db/id_counter)
+echo $((counter+=1)) > $dir_path/../db/id_counter
+export user1=user$counter.$OWNER
+near create-account $user1 --masterAccount $OWNER
+
 
 echo
 echo

@@ -1,1 +1,16 @@
-//ToDo
+{
+  "version": "1.0.0",
+  "defaultFile": "src/ngo/assembly/index.ts",
+  "environment": "solidity",
+  "setupCommands": ["yarn"],
+  "compileCommand": "sh scripts/1.dev-deploy.sh",
+  "tests": [
+    { "itShould": "Register NGO", "command": "sh learn_tests/01.sh" },
+    { "itShould": "adding a project", "command": "sh learn_tests/02.sh" },
+    { "itShould": "getting NGO", "command": "sh learn_tests/03.sh" },
+    { "itShould": "getting projects", "command": "sh learn_tests/04.sh" },
+    { "itShould": "donating", "command": "sh learn_tests/05.sh" },
+    { "itShould": "NGO project Sad Paths", "command": "sh learn_tests/06.sh" }
+  ],
+  "learnerAccessibleFileList": ["src/ngo/assembly/*"]
+}
