@@ -1,10 +1,8 @@
-//This file is for maintenance purposes. To work, cut$paste this
+//This file is for maintenance purposes. To work, cut&paste this
 //file to ../src/ngo/assembly/index.ts
 import { context, u128, PersistentVector, PersistentMap, logging, ContractPromiseBatch, RNG} from "near-sdk-as";
 import {Vector} from './models';
-/** 
- * Exporting a new class Game so it can be used outside of this file.
- */
+
 @nearBindgen
 class Project {
     id: u32;
@@ -28,10 +26,6 @@ export class NGO {
     address: string;
 
     constructor() {
-        /*
-        Generates a random number for the gameId.
-        Need to change this to counter eventually.
-        */
         const rng = new RNG<u32>(1, u32.MAX_VALUE);
         const roll = rng.next();
         this.id = roll;
