@@ -20,12 +20,7 @@ echo "(edit scripts/1.dev-deploy.sh to deploy other contract)"
 echo ---------------------------------------------------------
 echo
 
-# comment out the line below to deploy the other example contract
-# near dev-deploy ./build/release/ngo.wasm
 near deploy --accountId $OWNER --wasmFile ./build/release/ngo.wasm
-
-# uncomment the line below to deploy the other example contract
-# near dev-deploy ./build/release/singleton.wasm
 
 echo --------------------------------------------
 echo
