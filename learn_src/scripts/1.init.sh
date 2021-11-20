@@ -13,8 +13,7 @@ echo --------------------------------------------
 yarn build:release
 
 file1="user1.txt"
-file2="user2.txt"
-if [ ! -f "$file1" ] || [ ! -f "$file2" ]
+if [ ! -f "$file1" ]
 then
     echo --------------------------------------------
     echo
@@ -29,14 +28,4 @@ then
     touch user1.txt
     echo $user1 > user1.txt
     echo "user1: $user1"
-
-
-    echo "creating second dev-account"
-    rm -rf ./neardev
-    until near dev-deploy ./build/release/$contract_file; do :; done
-
-    user2=$(cat ./neardev/dev-account)
-    touch user2.txt
-    echo $user2 > user2.txt
-    echo "user2: $user2"
 fi
