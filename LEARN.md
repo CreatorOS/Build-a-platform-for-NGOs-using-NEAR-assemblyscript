@@ -192,3 +192,4 @@ export function donate(ngoId:u32,projectId:u32): string
 }
 ```
 And that is it! that was an example of writing smart contracts on NEAR using AssemblyScript.
+Stay tuned and happy coding!
