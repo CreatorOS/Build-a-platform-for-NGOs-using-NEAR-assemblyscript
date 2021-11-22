@@ -155,6 +155,7 @@ to_beneficiary.transfer(//how much money was sent with the function call);
 ```
 (See: https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_promise_.contractpromisebatch.html#transfer).
 Also, to the money sent whith the transaction can be queried using context.attachedDeposit, so this should be passed as a parameter to the transfer function.
+
 STEP 1 : initialize to_beneficiary.
 STEP 2 : transfer funds.
 ```ts
