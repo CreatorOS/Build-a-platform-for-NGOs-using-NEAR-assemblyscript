@@ -12,8 +12,11 @@ Thus, we need to create a class Project. Before writing a class, you have to inc
 This tag "announces" that your class compatible with NEAR. Let's create the class itself! notice that you have three lines here, following the example.
 If you are wondering about the weird first two lines in the constructor, then this is just to generate a random variable.
 Three things for you to do:
+
 STEP 1 : initialize the address field with the parameter passed in the constructor.
+
 STEP 2 : initialize name, the same way.
+
 STEP 3 : initialize funds, the same way.
 ```ts
 class Project {
@@ -37,6 +40,7 @@ Well, let's be fair and create a class NGO:
 
 STEP 1 : assign id same as before.
 But there is a little tweak when it comes to initializing address, we want this address to be the NEAR account id of the transaction sender (pretty much like msg.sender if you came from Solidity). in Near, this can be achieved by accessing context.sender, this comes from near-sdk-as imports (see the top of the code). So:
+
 STEP 2 : save context.sender to address. 
 ```ts
 @nearBindgen
@@ -68,9 +72,13 @@ So these are just a bunch of key:value maps. You are maybe wondering what are th
 ## Registering NGOs
 Ok, let's register an NGO, shall we? We need a function for this:
 This function's body has four lines:
+
 STEP 1: create an instance of class NGO (syntax : ```const nameOfInstance = new className() ```). Call this instance "ngo".
+
 In the second line, you can see that the ngo is being pushed to the appropriate list. 
+
 STEP 2 : push ngo.id to ngoIdList.
+
 STEP 3: return ngo's id in the fourth line.
 ```ts
 export function registerNGO(): u32 {
@@ -84,7 +92,9 @@ export function registerNGO(): u32 {
 ## Adding projects
 We also should allow creating projects, let's write a function for that:
 First, we fetch the NGO to which the project will be added. If this NGO exists, we add the project. There are two lines for you to add here, the first one is to add a pair of {newProject.id, newProject} to projects list. it works in similar fashion to regidterNGO(), when we added ngo to ngoList.
+
 STEP 1 : Set the newly created project in the projects map
+
 STEP 2 : push newProjectId to its list.
 ```ts
 export function addProject(ngoId: u32, address: string, name: string, funds: string): u32{
@@ -112,6 +122,7 @@ export function addProject(ngoId: u32, address: string, name: string, funds: str
 ## Creating getter functions
 Let's write some useful getters (view functions). we need a function that returns a list of all NGOs (IDs). Let's write it!
 So the most important line is waiting for you to write, it should simply copy the id at index i to ngos.
+
 STEP 1 : push ngoIdList's ith member to ngos 
 ```ts
 export function getNGO(): Array<u32> {
@@ -127,6 +138,7 @@ export function getNGO(): Array<u32> {
 ```
 
 The same way, we need a list of all projects. Do the same as in the last step, write a line that pushes projectIdList's ith member to projectList.
+
 STEP 1 : pushe projectIdList's ith member to projectList! 
 ```ts
 export function getProjects(ngoId:u32):Array<u32> {
