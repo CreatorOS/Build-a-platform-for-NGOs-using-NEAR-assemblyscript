@@ -13,3 +13,9 @@ neardev/
 
 user1.txt
 user2.txt
+
+Dockerfile
+
+main.sh
+test.sh
+compile.sh
