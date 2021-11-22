@@ -146,7 +146,11 @@ export function getProjects(ngoId:u32):Array<u32> {
 ## Donating NEARs
 What if we need to donate to a project? there should be a way to transfer NEARs between address, yeah?
 Let's see how this can be programmed:
+<<<<<<< HEAD
 This is can be done using NEAR's ContractPromiseBatch (see:https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_promise_.contractpromisebatch.html). We want our project to recieve funds so you should add two statements in donate():
+=======
+This is can be done using NEAR's ContractPromiseBatch (see:https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_promise_.contractpromisebatch.html). We want our project to recieve funds so you should write these two lines in donate():
+>>>>>>> 6e33c6a9d5025b41f4be8cbfd067fae5ed366ff8
 ```ts
 const to_beneficiary = ContractPromiseBatch.create(//project address here);
 to_beneficiary.transfer(//how much money was sent with the function call);
