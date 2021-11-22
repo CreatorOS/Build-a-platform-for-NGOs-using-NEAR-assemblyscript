@@ -2,8 +2,8 @@
   "version": "1.0.0",
   "defaultFile": "src/ngo/assembly/index.ts",
   "environment": "near-asm",
-  "setupCommands": [". scripts/1.init.sh ngo.wasm"],
-  "compileCommand": "yarn build:release || exit 1",
+  "setupCommands": [],
+  "compileCommand": ". scripts/1.init.sh ngo.wasm",
   "tests": [
     { "itShould": "Register NGO", "command": ". learn_tests/01.sh" },
     { "itShould": "adding a project", "command": ". learn_tests/02.sh" },
