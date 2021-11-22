@@ -5,12 +5,12 @@ First, you can see some imports from NEAR's AssemblyScript SDK already there for
 
 ## Creating necessary classes 
 So, every NGO has projects, right?
-Thus, we need to create a class Project. Before writing a class, you have to include this line above class declaration:
+Thus, we need to create a class Project. Before writing a class, you have to include this line above the class declaration:
 ```ts
 @nearBindgen
 ```
-This tag "announces" that your class compatible with NEAR. Let's create the class itself! notice that you have three lines here, following the example.
-If you are wondering about the weird first two lines in the constructor, then this is just to generate a random variable.
+This tag "announces" that your class is compatible with NEAR. Let's create the class itself! Notice that you have three lines here, following the example.
+If you were wondering about the weird first two lines in the constructor, then this is just to generate a random variable.
 Three things for you to do:
 
 STEP 1 : initialize the address field with the parameter passed in the constructor.
@@ -35,7 +35,7 @@ class Project {
     }
 }
 ```
-cool, now we know how to create projects. But what about NGOs themselves?
+Cool, now we know how to create projects. But what about NGOs themselves?
 Well, let's be fair and create a class NGO:
 
 STEP 1 : assign id same as before.
@@ -68,7 +68,7 @@ export const projects = new PersistentMap<u32, Project>("p")
 export const ngoProjectMap = new PersistentMap<u32, PersistentMap<u32, Project>>("np");
 export const projectIdList = new PersistentVector<u32>("pl");
 ```
-So these are just a bunch of key:value maps. You are maybe wondering what are these strings between parantheses doing at the end of each line. These strings are just storage prefixes that should be unique among all lists, this is because the state of contracts is a key-value storage.
+So these are just a bunch of key:value maps. You are maybe wondering what are these strings between parentheses doing at the end of each line. These strings are just storage prefixes that should be unique among all lists, this is because the state of contracts is key-value storage.
 
 ## Registering NGOs
 Ok, let's register an NGO, shall we? We need a function for this:
@@ -92,7 +92,7 @@ export function registerNGO(): u32 {
 
 ## Adding projects
 We also should allow creating projects, let's write a function for that:
-First, we fetch the NGO to which the project will be added. If this NGO exists, we add the project. There are two lines for you to add here, the first one is to add a pair of {newProject.id, newProject} to projects list. it works in similar fashion to regidterNGO(), when we added ngo to ngoList.
+First, we fetch the NGO to which the project will be added. If this NGO exists, we add the project. There are two lines for you to add here, the first one is to add a pair of {newProject.id, newProject} to projects list. it works in a similar fashion to regidterNGO(), when we added ngo to ngoList.
 
 STEP 1 : Set the newly created project in the projects map
 
@@ -138,9 +138,9 @@ export function getNGO(): Array<u32> {
 }
 ```
 
-The same way, we need a list of all projects. Do the same as in the last step, write a line that pushes projectIdList's ith member to projectList.
+In the same way, we need a list of all projects. Do the same as in the last step, write a line that pushes projectIdList's ith member to projectList.
 
-STEP 1 : pushe projectIdList's ith member to projectList! 
+STEP 1 : push projectIdList's ith member to projectList! 
 ```ts
 export function getProjects(ngoId:u32):Array<u32> {
     logging.log("Trying to get Projects")
@@ -157,17 +157,17 @@ export function getProjects(ngoId:u32):Array<u32> {
 ```
 
 ## Donating NEARs
-What if we need to donate to a project? there should be a way to transfer NEARs between address, yeah?
+What if we need to donate to a project? there should be a way to transfer NEARs between addresses, yeah?
 Let's see how this can be programmed:
 
-This is can be done using NEAR's ContractPromiseBatch (see:https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_promise_.contractpromisebatch.html). We want our project to recieve funds so you should add two statements in donate():
+This is can be done using NEAR's ContractPromiseBatch (see:https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_promise_.contractpromisebatch.html). We want our project to receive funds so you should add two statements in donate():
 
 ```ts
 const to_beneficiary = ContractPromiseBatch.create(//project address here);
 to_beneficiary.transfer(//how much money was sent with the function call);
 ```
 (See: https://near.github.io/near-sdk-as/classes/_sdk_core_assembly_promise_.contractpromisebatch.html#transfer).
-Also, to the money sent whith the transaction can be queried using context.attachedDeposit, so this should be passed as a parameter to the transfer function.
+Also, the money sent with the transaction can be queried using context.attachedDeposit, so this should be passed as a parameter to the transfer function.
 
 STEP 1 : initialize to_beneficiary.
 
@@ -191,4 +191,4 @@ export function donate(ngoId:u32,projectId:u32): string
   return "Could Not Complete";
 }
 ```
-And that is it! that was a n example of writing smart contracts on NEAR using AssemblyScript
+And that is it! that was an example of writing smart contracts on NEAR using AssemblyScript.
