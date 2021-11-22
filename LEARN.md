@@ -39,6 +39,7 @@ cool, now we know how to create projects. But what about NGOs themselves?
 Well, let's be fair and create a class NGO:
 
 STEP 1 : assign id same as before.
+
 But there is a little tweak when it comes to initializing address, we want this address to be the NEAR account id of the transaction sender (pretty much like msg.sender if you came from Solidity). in Near, this can be achieved by accessing context.sender, this comes from near-sdk-as imports (see the top of the code). So:
 
 STEP 2 : save context.sender to address. 
