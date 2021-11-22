@@ -157,6 +157,7 @@ to_beneficiary.transfer(//how much money was sent with the function call);
 Also, to the money sent whith the transaction can be queried using context.attachedDeposit, so this should be passed as a parameter to the transfer function.
 
 STEP 1 : initialize to_beneficiary.
+
 STEP 2 : transfer funds.
 ```ts
 export function donate(ngoId:u32,projectId:u32): string
