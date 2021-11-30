@@ -1,5 +1,5 @@
 import { registerNGO, addProject, getNGO, getProjects, donate } from "../assembly";
-import { VMContext, VM, u128 } from "near-sdk-as";
+import { VMContext} from "near-sdk-as";
 
 describe("NGO project Happy Paths", () => {
   it("should register an NGO using registerNGO()", () => {
@@ -8,10 +8,11 @@ describe("NGO project Happy Paths", () => {
   });
 
   it("should add a Project", () => {
+    VMContext.setSigner_account_id("alice.testnet");
     const ngo = registerNGO();
     const project = addProject(
       ngo,
-      process.env.get("user1"),
+      "alice.testnet",
       "Book Drive",
       "10000000000000000000000000",
     );
@@ -27,22 +28,23 @@ describe("NGO project Happy Paths", () => {
   });
 
   it("should get all the projects", () => {
+    VMContext.setSigner_account_id("alice.testnet");
     const ngo = registerNGO();
     const project = addProject(
       ngo,
-      process.env.get("user1"),
+      "alice.testnet",
       "Book Drive",
       "10000000000000000000000000",
     );
     const project1 = addProject(
       ngo,
-      process.env.get("user1"),
+      "alice.testnet",
       "Book Drive",
       "10000000000000000000000000",
     );
     const project2 = addProject(
       ngo,
-      process.env.get("user1"),
+      "alice.testnet",
       "Book Drive",
       "10000000000000000000000000",
     );
@@ -53,10 +55,11 @@ describe("NGO project Happy Paths", () => {
 
 describe("NGO project Sad Paths", () => {
   throws("to return the failure of project addition", () => {
+    VMContext.setSigner_account_id("alice.testnet");
     const ngo = registerNGO();
     const project = addProject(
       50,
-      process.env.get("user1"),
+      "alice.testnet",
       "Book Drive",
       "10000000000000000000000000",
     );
